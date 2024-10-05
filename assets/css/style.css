@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-x: hidden; 
+}
+
+#myVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    text-align: top;
+    z-index: 1;
+    display: flex;
+    gap: 100px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+h1 {
+    color: #fff;
+    font-size: 70px;
+    margin: 20px 0 10px 0;
+}
+
+input[type="file"], input[type="submit"] {
+    font-size: 40px;
+    color: #cbd4ff;
+}
+
+input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#live-feed {
+    margin-top: 500px;
+}
+
+a {
+    font-size: 45px;
+    color: #add8e6;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    z-index: 1;
+}
+
+a:hover {
+    color: #3e9fdb;
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    color: white;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    align-items: center;
+    height: 100px; /* Fixed height */
+}
+
+footer p {
+    margin: 0 30px; /* Adjust margins */
+    font-size: 20px; /* Adjust font size */
+}
+
+footer a {
+    font-size: 20px; /* Adjust font size */
+    margin: 0 20px; /* Adjust margins */
+}
+
+footer img {
+    margin: 0 20px; /* Adjust margins */
+    height: 50px; /* Fixed height */
+    width: 50px; /* Fixed width */
+}
+
+label.upload-label {
+    cursor: pointer;
+    display: inline-block;
+    color: #cbd4ff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+label.upload-label:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
