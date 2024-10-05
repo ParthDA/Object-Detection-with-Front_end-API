@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Webcam Feed</title>
+
+    <!-- Link to the CSS file (assuming you're using the same style.css as in index.html) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <style>
+        /* Inline styles specific to this page */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            width: 100%;
+        }
+
+        h1 {
+            color: white;
+            font-size: 48px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        img {
+            border: 6px solid transparent;
+            border-radius: 12px; /* Optional: Rounded corners */
+            max-width: 80%;
+            margin: 20px 0;
+            padding: 6px; /* Add padding so the border glow is visible */
+            background: linear-gradient(90deg,
+                        rgb(51, 0, 255),
+                        rgb(0, 0, 0),
+                        rgba(0, 0, 255, 1),
+                        rgb(2, 0, 74),
+                        rgb(47, 0, 255),
+                        rgb(0, 0, 0),
+                        rgb(64, 0, 255)); /* Gradient colors */
+            background-size: 300% 300%; /* Larger size for smooth animation */
+            animation: glow 10s ease-in-out infinite, rotateGradient 5s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); Soft outer glow
+        } */
+
+        @keyframes rotateGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(11, 1, 57, 0.905),
+                            0 0 30px rgba(0, 68, 255, 0.9),
+                            0 0 40px rgba(162, 0, 255, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 20px rgb(1, 32, 58),
+                            0 0 30px rgba(38, 2, 79, 0.9),
+                            0 0 40px rgba(0, 21, 255, 0.6);
+            }
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* footer {
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: px; /* Smaller text */
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        } */
+    </style>
+</head>
+<body>
+
+    <!-- Background video like in index.html -->
+    <video autoplay muted loop id="myVideo">
+        <source src="{{ url_for('static', filename='videos/Khush.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Live Webcam Feed</h1>
+
+        <!-- Video Feed from the webcam -->
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" width="640" height="480" alt="Live Feed">
+        </div>
+
+        <!-- Go back to Home button -->
+        <a href="/">Go Back</a>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer>
+        <p>All rights for this website are reserved and claimed by:<br>
+        © ParthAdmane09</p>
+    </footer> -->
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use url_for to link the CSS file in the custom static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>YOLOv5 Object Detection</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            width: 100%;
+        }
+        .content {
+            flex: 1;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        footer {
+            margin-top: auto;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            color: white;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px; /* Fixed height */
+        }
+        footer p {
+            margin: 0 30px;
+            font-size: 20px; /* Adjust font size */
+        }
+        footer a {
+            font-size: 20px; /* Adjust font size */
+            margin: 0 20px;
+        }
+        footer img {
+            margin: 0 20px;
+            height: 50px; /* Fixed height */
+            width: 50px; /* Fixed width */
+        }
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .upload-button {
+            color: #cbd4ff;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 20px 30px;
+            cursor: pointer;
+            font-size: 46px;
+        }
+        .file-name {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+        input[type="file"]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Use url_for to link the video file in the custom static folder -->
+    <video autoplay muted loop id="myVideo">
+        <source src="{{ url_for('static', filename='videos/Khush.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h1>Upload an Image</h1>
+        <form id="form" action="/upload" method="post" enctype="multipart/form-data">
+            <label>
+                <input onchange="getFileName()" id="upload" type="file" name="file">  
+                <div style="display: flex; gap: 2px; justify-content: center; align-items: center; height: 100%;">
+                    <div class="upload-button">Choose File</div>
+                    <span style="font-size: 30px;" class="file-name" id="file-name"></span> <!-- Added span for file name -->
+                </div>
+            </label>
+          
+            <input type="submit" value="Upload">
+        </form>
+        <div id="stupid">
+            <h1>Live Webcam Feed</h1>
+            <a href="/camera">Access Webcam</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>All rights for this website are reserved and claimed by:<br>
+        © ParthAdmane09</p> 
+        <div style="display: flex; justify-content: right; align-items: center; ">
+            <!-- Use url_for to link the logo image in the custom static folder -->
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LinkedIn">
+            <a href="https://www.linkedin.com/in/parth-admane-434352247?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiBNSamOyT1a5cq9C2NoOPQ%3D%3D">Connect on LinkedIn</a>
+        </div>  
+    </footer>
+
+    <script>
+        function getFileName() {
+            var input = document.getElementById('upload');
+            var fileName = input.files[0].name;
+            document.getElementById('file-name').textContent = "Selected file: " + fileName;
+        }
+    </script>
+</body>
+</html>
+
+
