@@ -5,12 +5,22 @@ import io
 import shutil
 import cv2
 import os
+from werkzeug.utils import secure_filename
 
-# Configure Flask to use 'assets' as the static folder
 app = Flask(__name__, static_folder='assets')
 
 # Load YOLOv5 model
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+
+UPLOAD_FOLDER = 'uploads'
+RESULT_FOLDER = 'assets/results'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['RESULT_FOLDER'] = RESULT_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+if not os.path.exists(RESULT_FOLDER):
+    os.makedirs(RESULT_FOLDER)
 
 @app.route('/')
 def home():
@@ -23,18 +33,19 @@ def upload_file():
     file = request.files['file']
     if file.filename == '':
         return 'No selected file', 400
-    img_bytes = file.read()
-    img = Image.open(io.BytesIO(img_bytes))
+    filename = secure_filename(file.filename)
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(file_path)
+    
+    img = Image.open(file_path)
 
     # Perform object detection
     results = model(img)
     
-    result_dir = 'assets/results'
-    if os.path.exists(result_dir):
-        shutil.rmtree(result_dir)  # Clear old results
-    results.save(save_dir=result_dir)  # Save new results
+    results_path = os.path.join(app.config['RESULT_FOLDER'], filename)
+    results.save(save_dir=results_path)  # Save new results
 
-    return render_template('result.html')
+    return render_template('result.html', results=results_path)
 
 def gen_frames():
     cap = cv2.VideoCapture(0)  # Capture video from the webcam
@@ -51,7 +62,6 @@ def gen_frames():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -61,4 +71,4 @@ def camera():
     return render_template('camera.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000
