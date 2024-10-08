@@ -9,6 +9,7 @@ Step-by-step process:
  - Then we have to download all the dependencies : pip install -r requirements.txt
  - Your setup is completed👍
  - For running the project, we have to simply run the app🔥 : RUN - python app.py
- - http links will be generated on your terminal.
- - ![Terminal](assets/photo/qafb.png)
- - 
+ - http links will be generated on your terminal like this⬇️.
+ - ![Terminal](assets/photo/Terminal.png)
+ - Press CONTROL + LINK to open the index.html page.
+ -  
