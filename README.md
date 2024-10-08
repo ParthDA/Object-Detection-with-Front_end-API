@@ -5,5 +5,9 @@ Explore the awesomeness on my GitHub repo and be part of this dazzling journey. 
 together! 🌟🔍🎉
 
 Step-by-step process:
- - Firstly, clone my repo.
+ - Firstly, clone my Repo☑️.
+ - Then we have to download all the dependencies : pip install -r requirements.txt
+ - Your setup is completed👍
+ - For running the project, we have to simply run the app🔥 : RUN - python app.py
+ - http links will be generated on your terminal.
  - 
