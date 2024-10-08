@@ -12,5 +12,5 @@ Step-by-step process:
  - http links will be generated on your terminal like this⬇️.
  - ![Terminal](assets/photo/Terminal.png)
  - Press CONTROL + LINK to open the index.html page🧩.
- - [![Index](assets/photo/index.png)
- -  
+ - ![Index](assets/photo/index.png)
+
