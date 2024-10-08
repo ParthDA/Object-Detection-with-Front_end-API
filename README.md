@@ -11,5 +11,6 @@ Step-by-step process:
  - For running the project, we have to simply run the app🔥 : RUN - python app.py
  - http links will be generated on your terminal like this⬇️.
  - ![Terminal](assets/photo/Terminal.png)
- - Press CONTROL + LINK to open the index.html page.
+ - Press CONTROL + LINK to open the index.html page🧩.
+ - [![Index](assets/photo/index.png)
  -  
