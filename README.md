@@ -10,4 +10,5 @@ Step-by-step process:
  - Your setup is completed👍
  - For running the project, we have to simply run the app🔥 : RUN - python app.py
  - http links will be generated on your terminal.
+ - ![Terminal](assets/photo/qafb.png)
  - 
