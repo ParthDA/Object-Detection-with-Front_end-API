@@ -6,6 +6,7 @@ together! 🌟🔍🎉
 
 Step-by-step process:
  - Firstly, clone my Repo☑️.
+ - RUN : cd Object-Detection-with-Front_end-API
  - Then we have to download all the dependencies : pip install -r requirements.txt
  - Your setup is completed👍
  - For running the project, we have to simply run the app🔥 : RUN - python app.py
